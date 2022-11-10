@@ -12,27 +12,14 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties({"hibernateLazyInitializer"})
-@Component
-@NamedEntityGraph(name = "User.roles",
-        attributeNodes = @NamedAttributeNode("roles")
-)
 public class User implements UserDetails {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "username")
     private String username;
-
-    @Column(name = "password")
     private String password;
-
-    @Column(name = "email")
     private String email;
 
-    @Column(name = "age")
     private int age;
 
     @ManyToMany(cascade=CascadeType.REFRESH, fetch = FetchType.LAZY)
